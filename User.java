@@ -2,7 +2,7 @@ public class User{
 
     private int id;
     private String email;
-    public String name;
+    private String name;
 
     private static int count = 101;
     //constructor
@@ -16,9 +16,18 @@ public class User{
         this.name = name;
     }
 
-    void getDetails(){
-        System.out.println("Name: " +name + " Email: " + email + " ID: " + id);       
+    int getId(){
+        return this.id;
     }
+
+    String getName(){
+        return this.name;
+    }
+
+    String getEmail(){
+        return this.email;
+    }
+
 
     public static void main(String args[]){
         User user1 = new User();
@@ -27,8 +36,8 @@ public class User{
         User user2 = new User();
         user2.setDetails("ricky02523@gmail.com", "John");
 
-        user1.getDetails();
-        user2.getDetails();
+        System.out.println(user1.getName()+ " " + user1.getEmail()+ " " + user1.getId());
+        System.out.println(user2.getName()+ " " + user2.getEmail()+ " " + user2.getId());   
     }
 
 }
