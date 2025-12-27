@@ -23,8 +23,11 @@ public class OrderController {
 
     // GET/orders
     @GetMapping
-    public List<Order> getOrders() {
-        return orderService.getOrders();
+    public List<Order> getOrders(@RequestParam(required = false) String status) {
+        if(status != null)
+         return orderService.getOrderByStatus(status);
+        else
+            return orderService.getOrders();
     }
 
     // GET/orders/{id}
@@ -40,4 +43,6 @@ public class OrderController {
         }
         return ResponseEntity.ok(order);
     }
+
+
 }

@@ -3,6 +3,7 @@ package com.goutam.orders.service;
 import com.goutam.orders.model.Order;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,11 +23,20 @@ public class OrderService {
 
     public Order getOrderById(int id) {
         for (Order order : getOrders()) {
-            System.out.println("Checking order id = " + order.getId());
             if (order.getId() == id) {
                 return order;
             }
         }
         return null;
+    }
+
+    public List<Order> getOrderByStatus(String status){
+        List<Order>orderList= new ArrayList<>();
+        for (Order order : getOrders()) {
+            if (order.getStatus().equals(status)) {
+                orderList.add(order);
+            }
+        }
+        return orderList;
     }
 }
