@@ -2,6 +2,8 @@ package com.goutam.orders.service;
 
 import com.goutam.orders.model.Order;
 import org.springframework.stereotype.Service;
+import com.goutam.orders.dto.CreateOrderRequest;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +40,9 @@ public class OrderService {
             }
         }
         return orderList;
+    }
+
+    public Order createOrder(CreateOrderRequest request){
+        return new Order(106, request.getAmount(), request.getStatus());
     }
 }

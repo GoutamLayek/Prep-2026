@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.goutam.orders.dto.CreateOrderRequest;
+
 
 import java.util.List;
 import java.util.Map;
@@ -42,6 +44,15 @@ public class OrderController {
                 .body(Map.of("error", "Order not found"));
         }
         return ResponseEntity.ok(order);
+    }
+
+
+    @PostMapping
+    public ResponseEntity<Order> createOrder(@RequestBody CreateOrderRequest request) {
+        Order order = orderService.createOrder(request);
+        return ResponseEntity
+                .status(201)
+                .body(order);
     }
 
 
